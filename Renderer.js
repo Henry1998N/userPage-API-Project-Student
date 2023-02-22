@@ -36,11 +36,24 @@ class Renderer {
     );
     let aboutMeData = aboutMeApi.getData();
     aboutMeData.then((text) => {
-      console.log(text);
       const source = $("#meat-template").html();
       const template = Handlebars.compile(source);
       let newHTML = template({ text });
       $(".meat-container").append(newHTML);
+    });
+  }
+  renderPokemon() {
+    let randomId = Math.floor(Math.random() * 949);
+    let pokemonApi = new APIManager(
+      `https://pokeapi.co/api/v2/pokemon/${randomId}`
+    );
+    let pokemonData = pokemonApi.getData();
+    pokemonData.then((pokemon) => {
+      const source = $("#pokemon-template").html();
+      const template = Handlebars.compile(source);
+      let newHTML = template(pokemon);
+      console.log(pokemon);
+      $(".pokemon-container").append(newHTML);
     });
   }
 }

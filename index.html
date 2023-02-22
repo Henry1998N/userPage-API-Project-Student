@@ -18,50 +18,49 @@
 
   <body>
     <div class="container">
-      <div class="user-container">
-        <script id="users-template" type="text/x-handlebars-template">
-          {{#each mainUser}}
-            <img id="profile-pic" src="{{this.picture.medium}}" />
-            <div class="user-info">{{this.name.first}} {{this.name.last}}</div>
+      <script id="users-template" type="text/x-handlebars-template">
+        {{#each mainUser}}
+          <img id="profile-pic" src="{{this.picture.medium}}" />
+          <div class="user-info">{{this.name.first}}
+            {{this.name.last}}</div>
 
-            <div class="user-address">{{this.location.city}}
-              {{this.location.counrty}}</div>
+          <div class="user-address">{{this.location.city}}
+            {{this.location.counrty}}</div>
+
+        {{/each}}
+      </script>
+      <div class="user-container"></div>
+      <script id="quote-template" type="text/x-handlebars-template">
+        <p>favourite quote</p>
+        <div>{{this.quote}}</div>
+        <div>-Kanye West</div>
+      </script>
+      <div class="quote-container"></div>
+      <div class="content-container">
+        <script id="pokemon-template" type="text/x-handlebars-template">
+          <img src="{{this.sprites.front_default}}" />
+          <div id="pokemon-text">Favorite Pokemon :{{this.name}}</div>
+        </script>
+        <div class="pokemon-container"></div>
+        <script id="meat-template" type="text/x-handlebars-template">
+          <div class="about">About me</div>
+          <div class="meat-text">{{this.text}}</div>
+        </script>
+        <div class="meat-container"></div>
+      </div>
+      <div class="friends">
+        <script id="friends-template" type="text/x-handlebars-template">
+          {{#each friends}}
+            <p class="">{{this.name.first}}
+              {{this.name.last}}</p>
 
           {{/each}}
         </script>
-      </div>
-      <div class="quote-container">
-        <script id="quote-template" type="text/x-handlebars-template">
-          <p>favourite quote</p>
-          <div>{{this.quote}}</div>
-          <div>-Kanye West</div>
-        </script>
-      </div>
-      <div class="content-container">
-        <div class="pokemon-container"></div>
-        <div class="meat-container">
-          <script id="meat-template" type="text/x-handlebars-template">
-            <div class="about">About me</div>
-            {{#each text}}
-              <div class="meat-text">{{this}}</div>
-            {{/each}}
-          </script>
-        </div>
-      </div>
-      <div class="friends">
         <h4>Friends</h4>
-        <div class="friends-container">
-          <script id="friends-template" type="text/x-handlebars-template">
-            {{#each friends}}
-              <p class="">{{this.name.first}}
-                {{this.name.last}}</p>
-
-            {{/each}}
-          </script>
-        </div>
+        <div class="friends-container"></div>
       </div>
       <div class="buttons">
-        <button>Load User Data</button>
+        <button id="loadUser">Load User Data</button>
         <button>Display User</button>
       </div>
     </div>
