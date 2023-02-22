@@ -20,12 +20,12 @@
     <div class="container">
       <div class="user-container">
         <script id="users-template" type="text/x-handlebars-template">
-          {{#each data.results}}
-            <img id="profile-pic" src="{{picture.medium}}" />
-            <div class="user-info">{{name.first}} {{name.last}}</div>
+          {{#each mainUser}}
+            <img id="profile-pic" src="{{this.picture.medium}}" />
+            <div class="user-info">{{this.name.first}} {{this.name.last}}</div>
 
-            <div class="user-address">{{location.city}}
-              {{location.counrty}}</div>
+            <div class="user-address">{{this.location.city}}
+              {{this.location.counrty}}</div>
 
           {{/each}}
         </script>
@@ -40,9 +40,9 @@
         <div class="friends-container">
           <script id="friends-template" type="text/x-handlebars-template">
             <ul>
-              {{#each friends.results}}
-                <p class="">{{name.first}}
-                  {{name.last}}</p>
+              {{#each friends}}
+                <p class="">{{this.name.first}}
+                  {{this.name.last}}</p>
 
               {{/each}}
             </ul>
