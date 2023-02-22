@@ -79,7 +79,9 @@ body {
   box-shadow: -1px -1px 3px black;
   padding-left: 1vmax;
 }
-
+.about {
+  padding: 15px;
+}
 ul {
   list-style-type: none;
 }

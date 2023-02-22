@@ -30,22 +30,33 @@
           {{/each}}
         </script>
       </div>
-      <div class="quote-container"></div>
+      <div class="quote-container">
+        <script id="quote-template" type="text/x-handlebars-template">
+          <p>favourite quote</p>
+          <div>{{this.quote}}</div>
+          <div>-Kanye West</div>
+        </script>
+      </div>
       <div class="content-container">
         <div class="pokemon-container"></div>
-        <div class="meat-container"></div>
+        <div class="meat-container">
+          <script id="meat-template" type="text/x-handlebars-template">
+            <div class="about">About me</div>
+            {{#each text}}
+              <div class="meat-text">{{this}}</div>
+            {{/each}}
+          </script>
+        </div>
       </div>
       <div class="friends">
         <h4>Friends</h4>
         <div class="friends-container">
           <script id="friends-template" type="text/x-handlebars-template">
-            <ul>
-              {{#each friends}}
-                <p class="">{{this.name.first}}
-                  {{this.name.last}}</p>
+            {{#each friends}}
+              <p class="">{{this.name.first}}
+                {{this.name.last}}</p>
 
-              {{/each}}
-            </ul>
+            {{/each}}
           </script>
         </div>
       </div>

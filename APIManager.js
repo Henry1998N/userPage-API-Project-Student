@@ -5,11 +5,11 @@ class APIManager {
     this.apiUrl = apiUrl;
     this.data = {};
   }
-  getUsersData() {
+  getData() {
     return $.ajax({
       method: "GET",
       url: this.apiUrl,
-      success: function (user) {},
+      success: function () {},
       error: function (xhr, text, error) {
         console.log(text);
       },
