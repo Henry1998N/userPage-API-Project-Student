@@ -15,7 +15,4 @@ class APIManager {
       },
     });
   }
-  getAllData() {
-    return this.data;
-  }
 }
