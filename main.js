@@ -12,4 +12,5 @@ $("#loadUser").on("click", () => {
   renderer.renderQuoteData();
   renderer.renderAboutSection();
   renderer.renderPokemon();
+  console.log(renderer.MainRenderer.data);
 });

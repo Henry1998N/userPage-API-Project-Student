@@ -1,5 +1,7 @@
 class Renderer {
-  constructor() {}
+  constructor() {
+    this.MainRenderer = new APIManager();
+  }
   renderUsersData() {
     let userApi = new APIManager("https://randomuser.me/api/?results=7");
     let userData = userApi.getData();
@@ -7,6 +9,7 @@ class Renderer {
       .then((data) => {
         const mainUser = data.results.splice(0, 1);
         const source = $("#users-template").html();
+        this.MainRenderer.data["mainUser"] = mainUser;
         const template = Handlebars.compile(source);
         let newHTML = template({ mainUser });
         $(".user-container").append(newHTML);
@@ -16,6 +19,7 @@ class Renderer {
       .then((friends) => {
         const source = $("#friends-template").html();
         const template = Handlebars.compile(source);
+        this.MainRenderer.data["friends"] = friends;
         let newHTML = template({ friends });
         $(".friends-container").append(newHTML);
       });
@@ -24,6 +28,7 @@ class Renderer {
     let quoteApi = new APIManager("https://api.kanye.rest/");
     let quoteData = quoteApi.getData();
     quoteData.then((quote) => {
+      this.MainRenderer.data["quote"] = quote;
       const source = $("#quote-template").html();
       const template = Handlebars.compile(source);
       let newHTML = template(quote);
@@ -38,6 +43,7 @@ class Renderer {
     aboutMeData.then((text) => {
       const source = $("#meat-template").html();
       const template = Handlebars.compile(source);
+      this.MainRenderer.data["aboutMe"] = text;
       let newHTML = template({ text });
       $(".meat-container").append(newHTML);
     });
@@ -49,10 +55,10 @@ class Renderer {
     );
     let pokemonData = pokemonApi.getData();
     pokemonData.then((pokemon) => {
+      this.MainRenderer.data["pokemon"] = pokemon;
       const source = $("#pokemon-template").html();
       const template = Handlebars.compile(source);
       let newHTML = template(pokemon);
-      console.log(pokemon);
       $(".pokemon-container").append(newHTML);
     });
   }
