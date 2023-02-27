@@ -6,3 +6,10 @@ class User {
     this.country = country;
   }
 }
+
+// HandlebarsTemplate(containerName, sourceData, data) {
+//   const source = $(`#${sourceData}-template`).html();
+//   const template = Handlebars.compile(source);
+//   let newHTML = template({ data });
+//   $(".user-container").append(newHTML);
+// }

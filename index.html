@@ -32,25 +32,29 @@
       <div class="user-container"></div>
       <script id="quote-template" type="text/x-handlebars-template">
         <p>favourite quote</p>
-        <div>{{this.quote}}</div>
+        <div>{{quote}}</div>
         <div>-Kanye West</div>
       </script>
       <div class="quote-container"></div>
       <div class="content-container">
         <script id="pokemon-template" type="text/x-handlebars-template">
           <img src="{{this.sprites.front_default}}" />
-          <div id="pokemon-text">Favorite Pokemon :{{this.name}}</div>
+          <div id="pokemon-text">Favorite Pokemon :{{toProperCase
+              this.name
+            }}</div>
         </script>
         <div class="pokemon-container"></div>
+
         <script id="meat-template" type="text/x-handlebars-template">
-          <div class="about">About me</div>
-          <div class="meat-text">{{this.text}}</div>
+          <div class="about">About me</div><div
+            class="meat-text"
+          >{{meatData}}</div>
         </script>
         <div class="meat-container"></div>
       </div>
       <div class="friends">
         <script id="friends-template" type="text/x-handlebars-template">
-          {{#each friends}}
+          {{#each friends.results}}
             <p class="">{{this.name.first}}
               {{this.name.last}}</p>
 
@@ -61,7 +65,7 @@
       </div>
       <div class="buttons">
         <button id="loadUser">Load User Data</button>
-        <button>Display User</button>
+        <button id="displayUser">Display User</button>
       </div>
     </div>
     <script
@@ -77,6 +81,8 @@
     <script src="User.js"></script>
     <script src="APIManager.js"></script>
     <script src="Renderer.js"></script>
+    <script src="playRender.js"></script>
+    <script src="playApi.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
