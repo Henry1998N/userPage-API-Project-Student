@@ -1,39 +1,27 @@
 class Renderer {
   constructor() {}
-  HandlebarsTemplate(containerName, source, data) {}
-  renderUsersData(mainUser) {
-    const source = $("#users-template").html();
+  HandlebarsTemplate(containerName, sourceTemplate, data) {
+    const source = $(`#${sourceTemplate}-template`).html();
     const template = Handlebars.compile(source);
-    let newHTML = template({ mainUser });
-    console.log({ mainUser });
-    $(".user-container").empty().append(newHTML);
+    let newHTML = template(data);
+    $(`.${containerName}-container`).empty().append(newHTML);
+  }
+  renderUsersData(mainUser) {
+    this.HandlebarsTemplate("user", "users", { mainUser });
   }
   renderFriendsData(friends) {
-    const source = $("#friends-template").html();
-    const template = Handlebars.compile(source);
-    let newHTML = template({ friends });
-    console.log({ friends });
-    $(".friends-container").empty().append(newHTML);
+    this.HandlebarsTemplate("friends", "friends", { friends });
   }
   renderQuoteData(quote) {
-    const source = $("#quote-template").html();
-    const template = Handlebars.compile(source);
-    let newHTML = template(quote);
-    $(".quote-container").empty().append(newHTML);
+    this.HandlebarsTemplate("quote", "quote", quote);
   }
   renderAboutSection(meatData) {
-    const source = $("#meat-template").html();
-    const template = Handlebars.compile(source);
-    let newHTML = template({ meatData });
-    $(".meat-container").empty().append(newHTML);
+    this.HandlebarsTemplate("meat", "meat", { meatData });
   }
   renderPokemon(pokemon) {
     Handlebars.registerHelper("toProperCase", (string) => {
       return string[0].toUpperCase() + string.slice(1);
     });
-    const source = $("#pokemon-template").html();
-    const template = Handlebars.compile(source);
-    let newHTML = template(pokemon);
-    $(".pokemon-container").empty().append(newHTML);
+    this.HandlebarsTemplate("pokemon", "pokemon", pokemon);
   }
 }
